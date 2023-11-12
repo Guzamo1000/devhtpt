@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <div class="row">
+        <h1> List Students </h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/managerCustomer/newCustomer}" class="btn btn-primary btn-sm mb-3"> ADD Customer</a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Account</th>
+            <th>Phone number</th>
+            <th>Address</th>
+        </tr>
+        <tbody>
+        <tr th:each="customer: ${customer}">
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.Name}"></td>
+            <td th:text="${customer.account}"></td>
+            <td th:text="${customer.PhoneNumber}"></td>
+            <td style="display: flex; justify-content: center;" th:text="${customer.address}"></td>
+            <td>
+               <a th:href="@{/managerCustomer/editCustomer/{id}(id=${customer.id})}"
+                  class="btn btn-primary">Update</a>
+
+               <a th:href="@{/managerCustomer/customer/{id}(id=${customer.id})}"
+                   class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+        </thead>
+    </table>
+</div>
+</body>
+</html>

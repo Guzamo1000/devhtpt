@@ -22,5 +22,5 @@ public class Branch {
     private  String address;
     @Column(name="PhoneNumber")
     private String phoneNumber;
-
+    
 }

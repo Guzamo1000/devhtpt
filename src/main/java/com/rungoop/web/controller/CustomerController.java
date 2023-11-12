@@ -1,4 +1,4 @@
-package com.rungoop.web.controller.Customer;
+package com.rungoop.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

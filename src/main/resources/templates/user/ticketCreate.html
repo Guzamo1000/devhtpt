@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center"> Create New Student</h1>
+                <div class="card-body">
+                    <form th:action="@{/managerTicket/ticket}" th:object="${tickets}" method="post">
+                        <div class="form-group">
+                            <label>ticketPrice</label>
+                            <input type="text"
+                                   name="ticketPrice"
+                                   th:field="*{ticketPrice}"
+                                   class="form-control"
+                                   placeholder="ticketPrice"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label>discount</label>
+                            <input type="text"
+                                   name="discount"
+                                   th:field="*{discount}"
+                                   class="form-control"
+                                   placeholder="discount"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label>seatType</label>
+                            <input type="text"
+                                   name="seatType"
+                                   th:field="*{seatType}"
+                                   class="form-control"
+                                   placeholder="seatType"/>
+                        </div>
+    
+                        <!-- <div class="form-group">
+                            <label>Name</label>
+                            <input type="text"
+                                   name="Address"
+                                   th:field="*{address}"
+                                   class="form-control"
+                                   placeholder="Enter Customer address"/>
+                        </div> -->
+    
+                        <!-- <div class="form-group">
+                            <label>Sex: </label>
+                            <div th:each="option : ${T(com.example.studentmanagesystem.enums.GenderOption).values()}">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input name="gender" type="radio" th:field="*{sex}" th:value="${option}"
+                                           class="custom-control-input" required>
+                                    <label class="custom-control-label" th:for="${#ids.prev('sex')}" th:text="${option}">option</label>
+                                </div>
+                            </div>
+                        </div> -->
+    
+                        <div class="form-group">
+                            <label>User: </label>
+                            <div th:each="user : ${listUser}">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input name="user" type="radio" th:field="*{user}"
+                                           th:value="${user.id}" class="custom-control-input" required>
+                                    <label class="custom-control-label" th:for="${#ids.prev('user')}"
+                                           th:text="${user.fullName}">user</label>
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" id="submit_create_student_id"> Submit</button>
+                        </div>
+                    </form>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
