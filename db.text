@@ -1,0 +1,167 @@
+CREATE TABLE branchs (
+  id BIGINT AUTO_INCREMENT NOT NULL,
+   address VARCHAR(255) NULL,
+   phone_number VARCHAR(255) NULL,
+   CONSTRAINT pk_branchs PRIMARY KEY (id)
+);
+
+CREATE TABLE customers (
+  id BIGINT AUTO_INCREMENT NOT NULL,
+   name VARCHAR(255) NULL,
+   account VARCHAR(255) NULL,
+   password VARCHAR(255) NULL,
+   phone_number VARCHAR(255) NULL,
+   address VARCHAR(255) NULL,
+   CONSTRAINT pk_customers PRIMARY KEY (id)
+);
+
+CREATE TABLE trains (
+  id BIGINT AUTO_INCREMENT NOT NULL,
+   manufacturing VARCHAR(255) NULL,
+   class1seats INT NULL,
+   class2seats INT NULL,
+   CONSTRAINT pk_trains PRIMARY KEY (id)
+);
+
+CREATE TABLE stations (
+  id BIGINT AUTO_INCREMENT NOT NULL,
+   address VARCHAR(255) NULL,
+   train_station_class VARCHAR(255) NULL,
+   CONSTRAINT pk_stations PRIMARY KEY (id)
+);
+
+CREATE TABLE users (
+  id BIGINT AUTO_INCREMENT NOT NULL,
+   full_name VARCHAR(255) NULL,
+   account VARCHAR(255) NULL,
+   password VARCHAR(255) NULL,
+   `role` VARCHAR(255) NULL,
+   phone_number VARCHAR(255) NULL,
+   branch_id BIGINT NULL,
+   CONSTRAINT pk_users PRIMARY KEY (id)
+);
+
+ALTER TABLE users ADD CONSTRAINT FK_USERS_ON_BRANCHID FOREIGN KEY (branch_id) REFERENCES branchs (id);
+
+CREATE TABLE train_rides (
+  id BIGINT AUTO_INCREMENT NOT NULL,
+   departure_time datetime NULL,
+   departure_station VARCHAR(255) NULL,
+   destination VARCHAR(255) NULL,
+   station BIGINT NULL,
+   train_id BIGINT NULL,
+   CONSTRAINT pk_trainrides PRIMARY KEY (id)
+);
+
+ALTER TABLE train_rides ADD CONSTRAINT FK_TRAINRIDES_ON_STATION FOREIGN KEY (station) REFERENCES stations (id);
+
+ALTER TABLE train_rides ADD CONSTRAINT FK_TRAINRIDES_ON_TRAINID FOREIGN KEY (train_id) REFERENCES trains (id);
+
+CREATE TABLE tickets (
+  id BIGINT AUTO_INCREMENT NOT NULL,
+   ticket_price FLOAT NULL,
+   discount FLOAT NULL,
+   seat_type VARCHAR(255) NULL,
+   user_id BIGINT NULL,
+   customer_id BIGINT NULL,
+   train_ride_id BIGINT NULL,
+   CONSTRAINT pk_tickets PRIMARY KEY (id)
+);
+
+ALTER TABLE tickets ADD CONSTRAINT FK_TICKETS_ON_CUSTOMERID FOREIGN KEY (customer_id) REFERENCES customers (id);
+
+ALTER TABLE tickets ADD CONSTRAINT FK_TICKETS_ON_TRAINRIDEID FOREIGN KEY (train_ride_id) REFERENCES train_rides (id);
+
+ALTER TABLE tickets ADD CONSTRAINT FK_TICKETS_ON_USERID FOREIGN KEY (user_id) REFERENCES users (id);
+
+
+-- Insert vào bảng branchs
+INSERT INTO branchs (address, phone_number) VALUES
+('Address 1', '0123456789'),
+('Address 2', '0123456788'),
+('Address 3', '0123456787'),
+('Address 4', '0123456786'),
+('Address 5', '0123456785'),
+('Address 6', '0123456784'),
+('Address 7', '0123456783'),
+('Address 8', '0123456782'),
+('Address 9', '0123456781'),
+('Address 10', '0123456780');
+
+-- Insert vào bảng customers
+INSERT INTO customers (name, account, password, phone_number, address) VALUES
+('Customer 1', 'Account 1', 'Password 1', '0123456789', 'Address 1'),
+('Customer 2', 'Account 2', 'Password 2', '0123456788', 'Address 2'),
+('Customer 3', 'Account 3', 'Password 3', '0123456787', 'Address 3'),
+('Customer 4', 'Account 4', 'Password 4', '0123456786', 'Address 4'),
+('Customer 5', 'Account 5', 'Password 5', '0123456785', 'Address 5'),
+('Customer 6', 'Account 6', 'Password 6', '0123456784', 'Address 6'),
+('Customer 7', 'Account 7', 'Password 7', '0123456783', 'Address 7'),
+('Customer 8', 'Account 8', 'Password 8', '0123456782', 'Address 8'),
+('Customer 9', 'Account 9', 'Password 9', '0123456781', 'Address 9'),
+('Customer 10', 'Account 10', 'Password 10', '0123456780', 'Address 10');
+
+-- Insert vào bảng trains
+INSERT INTO trains (manufacturing, class1seats, class2seats) VALUES
+('Manufacturing 1', 100, 200),
+('Manufacturing 2', 110, 210),
+('Manufacturing 3', 120, 220),
+('Manufacturing 4', 130, 230),
+('Manufacturing 5', 140, 240),
+('Manufacturing 6', 150, 250),
+('Manufacturing 7', 160, 260),
+('Manufacturing 8', 170, 270),
+('Manufacturing 9', 180, 280),
+('Manufacturing 10', 190, 290);
+
+-- Insert vào bảng stations
+INSERT INTO stations (address, train_station_class) VALUES
+('Address 1', 'Class 1'),
+('Address 2', 'Class 2'),
+('Address 3', 'Class 3'),
+('Address 4', 'Class 4'),
+('Address 5', 'Class 5'),
+('Address 6', 'Class 6'),
+('Address 7', 'Class 7'),
+('Address 8', 'Class 8'),
+('Address 9', 'Class 9'),
+('Address 10', 'Class 10');
+
+-- Insert vào bảng users
+INSERT INTO users (full_name, account, password, role, phone_number, branch_id) VALUES
+('Full Name 1', 'Account 1', 'Password 1', 'Role 1', '0123456789', 1),
+('Full Name 2', 'Account 2', 'Password 2', 'Role 2', '0123456788', 2),
+('Full Name 3', 'Account 3', 'Password 3', 'Role 3', '0123456787', 3),
+('Full Name 4', 'Account 4', 'Password 4', 'Role 4', '0123456786', 4),
+('Full Name 5', 'Account 5', 'Password 5', 'Role 5', '0123456785', 5),
+('Full Name 6', 'Account 6', 'Password 6', 'Role 6', '0123456784', 6),
+('Full Name 7', 'Account 7', 'Password 7', 'Role 7', '0123456783', 7),
+('Full Name 8', 'Account 8', 'Password 8', 'Role 8', '0123456782', 8),
+('Full Name 9', 'Account 9', 'Password 9', 'Role 9', '0123456781', 9),
+('Full Name 10', 'Account 10', 'Password 10', 'Role 10', '0123456780', 10);
+
+-- Insert vào bảng train_rides
+INSERT INTO train_rides (departure_time, departure_station, destination, station, train_id) VALUES
+('2023-01-01 00:00:00', 'Departure Station 1', 'Destination 1', 1, 1),
+('2023-01-02 00:00:00', 'Departure Station 2', 'Destination 2', 2, 2),
+('2023-01-03 00:00:00', 'Departure Station 3', 'Destination 3', 3, 3),
+('2023-01-04 00:00:00', 'Departure Station 4', 'Destination 4', 4, 4),
+('2023-01-05 00:00:00', 'Departure Station 5', 'Destination 5', 5, 5),
+('2023-01-06 00:00:00', 'Departure Station 6', 'Destination 6', 6, 6),
+('2023-01-07 00:00:00', 'Departure Station 7', 'Destination 7', 7, 7),
+('2023-01-08 00:00:00', 'Departure Station 8', 'Destination 8', 8, 8),
+('2023-01-09 00:00:00', 'Departure Station 9', 'Destination 9', 9, 9),
+('2023-01-10 00:00:00', 'Departure Station 10', 'Destination 10', 10, 10);
+
+-- Insert vào bảng tickets
+INSERT INTO tickets (ticket_price, discount, seat_type, user_id, customer_id, train_ride_id) VALUES
+(100.0, 0.1, 'Seat Type 1', 1, 1, 1),
+(200.0, 0.2, 'Seat Type 2', 2, 2, 2),
+(300.0, 0.3, 'Seat Type 3', 3, 3, 3),
+(400.0, 0.4, 'Seat Type 4', 4, 4, 4),
+(500.0, 0.5, 'Seat Type 5', 5, 5, 5),
+(600.0, 0.6, 'Seat Type 6', 6, 6, 6),
+(700.0, 0.7, 'Seat Type 7', 7, 7, 7),
+(800.0, 0.8, 'Seat Type 8', 8, 8, 8),
+(900.0, 0.9, 'Seat Type 9', 9, 9, 9),
+(1000.0, 1.0, 'Seat Type 10', 10, 10, 10);
