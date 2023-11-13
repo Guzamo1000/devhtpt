@@ -11,7 +11,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
                 <h1 class="text-center"> Create New Student</h1>
                 <div class="card-body">
-                    <form th:action="@{/managerTicket/ticket}" th:object="${tickets}" method="post">
+                    <form th:action="@{/managerTicket/createTicket}" th:object="${tickets}" method="post">
                         <div class="form-group">
                             <label>ticketPrice</label>
                             <input type="text"
@@ -20,7 +20,14 @@
                                    class="form-control"
                                    placeholder="ticketPrice"/>
                         </div>
-    
+                        <div class="form-group">
+                            <label>ticketName</label>
+                            <input type="text"
+                                   name="ticketName"
+                                   th:field="*{ticketName}"
+                                   class="form-control"
+                                   placeholder="ticketName"/>
+                        </div>
                         <div class="form-group">
                             <label>discount</label>
                             <input type="text"
@@ -59,7 +66,7 @@
                             </div>
                         </div> -->
     
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>User: </label>
                             <div th:each="userEach : ${listUser}">
                                 <div class="custom-control custom-radio custom-control-inline">
@@ -69,8 +76,32 @@
                                            th:text="${userEach.getFullName()}">user</label>
                                 </div>
                             </div>
+                        </div> -->
+                        
+                        
+                        <div class="form-group">
+                            <label>User: </label>
+                            <select th:field="*{userId}" class="custom-select" required>
+                                <option value="">User</option>
+                                <option th:each="userEach : ${listUser}" th:value="${userEach.getId()}" th:text="${userEach.getFullName()}"></option>
+                            </select>
                         </div>
-    
+
+                        <div class="form-group">
+                            <label>Customer: </label>
+                            <select th:field="*{customerId}" class="custom-select" required>
+                                <option value="">Customer</option>
+                                <option th:each="customer : ${listCustomer}" th:value="${customer.getId()}" th:text="${customer.getName()}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Station: </label>
+                            <select th:field="*{trainRideId}" class="custom-select" required>
+                                <option value="">Train Ride</option>
+                                <option th:each="TrainRide : ${listTrainRide}" th:value="${TrainRide.getId()}" th:text="${TrainRide.station.getAddress()}"></option>
+                            </select>
+                        </div>
     
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary" id="submit_create_student_id"> Submit</button>

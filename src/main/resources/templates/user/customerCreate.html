@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,17 +59,17 @@
                             </div>
                         </div> -->
     
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>Ticket: </label>
                             <div th:each="ticket : ${listTicket}">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input name="ticket" type="radio" th:field="*{ticket}"
+                                    <input name="ticket" type="radio" th:field="*{ticketId}"
                                            th:value="${ticket.getId()}" class="custom-control-input" required>
-                                    <label class="custom-control-label" th:for="${#ids.prev('ticket')}"
+                                    <label class="custom-control-label" th:for="${#ids.prev('ticketId')}"
                                            th:text="${ticket.getName()}">Name Ticket</label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
     
     
                         <div class="box-footer">

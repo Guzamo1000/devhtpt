@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
     <div>
         <div class="row">
             <h1> List Ticket </h1>
+            <a th:href="@{/managerCustomer/customer}">CUSTOMER MANAGE</a>
         </div>
         <div class="row">
             <div class="col-lg-3">
@@ -19,7 +20,9 @@
             <thead class="table-dark" >
             <tr>
                 <th style="border: 1px solid black">id</th>
+                <th style="border: 1px solid black">ticket name</th>
                 <th style="border: 1px solid black">ticket price</th>
+                
                 <th style="border: 1px solid black">discount</th>
                 <th style="border: 1px solid black">seat type</th>
                 <th style="border: 1px solid black">salesman</th>
@@ -31,19 +34,21 @@
             <tbody>
             <tr th:each="ticket: ${tickets}">
                 <td th:text="${ticket.id}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.ticketName}" style="border: 1px solid black"></td>
                 <td th:text="${ticket.ticketPrice}" style="border: 1px solid black"></td>
+                
                 <td th:text="${ticket.discount}" style="border: 1px solid black"></td>
                 <td th:text="${ticket.seatType}" style="border: 1px solid black"></td>
-                <td  th:text="${ticket.userId.fullName}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.userId.fullName}" style="border: 1px solid black"></td>
                 <td th:text="${ticket.customerId.name}" style="border: 1px solid black"></td>
-                <td th:text="${ticket.trainRideId.id}" style="border: 1px solid black"></td>
-                <!-- <td>
-                   <a th:href="@{/managerCustomer/editCustomer/{id}(id=${customer.id})}"
+                <td th:text="${ticket.trainRideId.station.getAddress()}" style="border: 1px solid black"></td>
+                <td>
+                   <a th:href="@{/managerTicket/editTicket/{id}(id=${ticket.id})}"
                       class="btn btn-primary">Update</a>
     
-                   <a th:href="@{/managerCustomer/customer/{id}(id=${customer.id})}"
+                  <a th:href="@{/managerTicket/deleteTicket/{id}(id=${ticket.id})}"
                        class="btn btn-danger">Delete</a>
-                </td> -->
+                </td>
             </tr>
             </tbody>
             </thead>
