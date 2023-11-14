@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center"> Update Ticket</h1>
+                <div class="card-body">
+                    <form th:action="@{/managerTicket/editTicket/{id} (id=${ticket.id})}" th:object="${ticket}" method="post">
+                        <div class="form-group">
+                            <label>ticketName</label>
+                            <input type="text"
+                                   name="ticketName"
+                                   th:field="*{ticketName}"
+                                   class="form-control"
+                                   placeholder="ticketName"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label>ticketPrice</label>
+                            <input type="text"
+                                   name="ticketPricet"
+                                   th:field="*{ticketPrice}"
+                                   class="form-control"
+                                   placeholder="ticketPrice"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label>discount</label>
+                            <input type="text"
+                                   name="discount"
+                                   th:field="*{discount}"
+                                   class="form-control"
+                                   placeholder="discountr"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label>seatType</label>
+                            <input type="text"
+                                   name="seatType"
+                                   th:field="*{seatType}"
+                                   class="form-control"
+                                   placeholder="seatType"/>
+                        </div>
+                        
+                        <!-- <div class="form-group">
+                            <label>Sex: </label>
+                            <div th:each="option : ${T(com.example.studentmanagesystem.enums.GenderOption).values()}">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input name="gender" type="radio" th:field="*{sex}" th:value="${option}"
+                                           class="custom-control-input" required>
+                                    <label class="custom-control-label" th:for="${#ids.prev('sex')}" th:text="${option}">option</label>
+                                </div>
+                            </div>
+                        </div> -->
+    
+                        <!-- <div class="form-group">
+                            <label>Ticket: </label>
+                            <div th:each="ticket : ${listTicket}">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input name="ticket" type="radio" th:field="*{ticket}"
+                                           th:value="${ticket.getId()}" class="custom-control-input" required>
+                                    <label class="custom-control-label" th:for="${#ids.prev('ticket')}"
+                                           th:text="${ticket.getName()}">classroom</label>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="form-group">
+                            <label>User: </label>
+                            <select th:field="*{userId}" class="custom-select" required>
+                                <option value="">User</option>
+                                <option th:each="userEach : ${listUser}" th:value="${userEach.getId()}" th:text="${userEach.getFullName()}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Customer: </label>
+                            <select th:field="*{customerId}" class="custom-select" required>
+                                <option value="">Customer</option>
+                                <option th:each="customer : ${listCustomer}" th:value="${customer.getId()}" th:text="${customer.getName()}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Station: </label>
+                            <select th:field="*{trainRideId}" class="custom-select" required>
+                                <option value="">Train Ride</option>
+                                <option th:each="TrainRide : ${listTrainRide}" th:value="${TrainRide.getId()}" th:text="${TrainRide.station.getAddress()}"></option>
+                            </select>
+                        </div>
+    
+    
+    
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary"> Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

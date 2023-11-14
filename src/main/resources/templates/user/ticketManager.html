@@ -10,6 +10,8 @@
         <div class="row">
             <h1> List Ticket </h1>
             <a th:href="@{/managerCustomer/customer}">CUSTOMER MANAGE</a>
+            <a th:href="@{/managerTicket/ticket}">TICKET MANAGE</a>
+            <a th:href="@{/managerTrain/train}">TRAIN MANAGE</a>
         </div>
         <div class="row">
             <div class="col-lg-3">
@@ -30,6 +32,7 @@
                 
                 
                 <th style="border: 1px solid black">train rided</th>
+                <th style="border: 1px solid black">train destination</th>
             </tr>
             <tbody>
             <tr th:each="ticket: ${tickets}">
@@ -41,7 +44,8 @@
                 <td th:text="${ticket.seatType}" style="border: 1px solid black"></td>
                 <td th:text="${ticket.userId.fullName}" style="border: 1px solid black"></td>
                 <td th:text="${ticket.customerId.name}" style="border: 1px solid black"></td>
-                <td th:text="${ticket.trainRideId.station.getAddress()}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.trainRideId.departureStation}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.trainRideId.destination}" style="border: 1px solid black"></td>
                 <td>
                    <a th:href="@{/managerTicket/editTicket/{id}(id=${ticket.id})}"
                       class="btn btn-primary">Update</a>

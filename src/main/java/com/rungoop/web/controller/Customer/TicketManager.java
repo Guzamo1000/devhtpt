@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -32,7 +34,7 @@ public class TicketManager {
     private CustomerService customerService;
     @Autowired
     private TrainRidesService trainRidesService;
-
+    
     @GetMapping("/ticket")
     public String getAllTicket(Model model) {
         model.addAttribute("tickets", ticketService.getAllTicket());
@@ -65,6 +67,33 @@ public class TicketManager {
     @GetMapping("/deleteTicket/{id}")
     public String deleteTicket(@PathVariable Long id){
         ticketService.deleteTicket(id);
+        return "redirect:/managerTicket/ticket";
+    }
+    @GetMapping(value="/editTicket/{id}")
+    public String editTicket(@PathVariable long id, Model model) {
+        Ticket ticket=ticketService.getTicketById(id);
+        model.addAttribute("ticket", ticket );
+        List<User> listUser = userService.getAllUser();
+        model.addAttribute("listUser", listUser);
+
+        List<Customer> listCustomers = customerService.getAllCustomers();
+        model.addAttribute("listCustomer", listCustomers);
+
+        List<TrainRide> listTrainRide = trainRidesService.getAllTrainRides();
+        model.addAttribute("listTrainRide", listTrainRide);
+        return "user/ticketEdit";
+    }
+    @PostMapping("/editTicket/{id}")
+    public String editTicket(@PathVariable long id, @ModelAttribute("ticket") Ticket ticket, Model model){
+        Ticket ticketupdate=ticketService.getTicketById(id);
+        ticketupdate.setId(id);
+        ticketupdate.setTicketName(ticket.getTicketName());
+        ticketupdate.setDiscount(ticket.getDiscount());
+        ticketupdate.setSeatType(ticket.getSeatType());
+        ticketupdate.setUserId(ticket.getUserId());
+        ticketupdate.setCustomerId(ticket.getCustomerId());
+        ticketupdate.setTrainRideId(ticket.getTrainRideId());
+        ticketService.updateTicket(ticketupdate);
         return "redirect:/managerTicket/ticket";
     }
 }

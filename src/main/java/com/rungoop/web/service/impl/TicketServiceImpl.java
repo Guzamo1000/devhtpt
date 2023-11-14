@@ -1,7 +1,6 @@
 package com.rungoop.web.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +26,9 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Optional<Ticket> getTicketById(Long id) {
+    public Ticket getTicketById(Long id) {
         // TODO Auto-generated method stub
-        return ticketRepository.findById(id);
+        return ticketRepository.findById(id).get();
     }
 
     
@@ -37,7 +36,7 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public void deleteTicket(long id) {
         // TODO Auto-generated method stub
-        ticketRepository.deleteById(id);;
+        ticketRepository.deleteById(id);
     }
     @Override
     public Ticket updateTicket(Ticket ticket) {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="row">
+            <h1> List train </h1>
+            <a th:href="@{/managerTrain/train}">Train</a>
+            <a th:href="@{/managerTicket/ticket}">Ticket</a>
+            <a th:href="@{/managerCustomer/customer}">Customer</a>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{/managerTrain/newTrain}" class="btn btn-primary btn-sm mb-3"> ADD Train</a>
+            </div>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>manuafacturing</th>
+                <th>class1seats</th>
+                <th>class2seats</th>
+            </tr>
+            <tbody>
+            <tr th:each="train: ${trains}">
+                <td th:text="${train.id}"></td>
+                <td th:text="${train.manufacturing}"></td>
+                <td th:text="${train.class1Seats}"></td>
+                <td th:text="${train.class2Seats}"></td>
+                <!-- <td style="display: flex; justify-content: center;" th:text="${customer.address}"></td> -->
+                <td>
+                   <a th:href="@{/managerTrain/editTrain/{id}(id=${train.id})}"
+                      class="btn btn-primary">Update</a>
+    
+                   <a th:href="@{/managerTrain/deleteTrain/{id}(id=${train.id})}"
+                       class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+            </thead>
+        </table>
+        <!-- <span id="error"></span> -->
+    </div>
+</body>
+</html>

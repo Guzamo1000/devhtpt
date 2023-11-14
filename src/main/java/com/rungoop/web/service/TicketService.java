@@ -12,7 +12,7 @@ public interface TicketService {
 
     Ticket saveTicket(Ticket ticket);
 
-    Optional<Ticket> getTicketById(Long id);
+    Ticket getTicketById(Long id);
 
     Ticket updateTicket(Ticket ticket);
 

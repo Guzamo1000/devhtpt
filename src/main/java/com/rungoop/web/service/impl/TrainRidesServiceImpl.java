@@ -20,5 +20,29 @@ public class TrainRidesServiceImpl implements TrainRidesService {
         return trainRidesRepository.findAll();
     }
 
+    @Override
+    public TrainRide getTrainRideById(long id) {
+        // TODO Auto-generated method stub
+        return trainRidesRepository.findById(id).get();
+    }
+
+    @Override
+    public TrainRide updateTrainRide(TrainRide trainRide) {
+        // TODO Auto-generated method stub
+        return trainRidesRepository.save(trainRide);
+    }
+
+    @Override
+    public TrainRide saveTrainRide(TrainRide trainRide) {
+        // TODO Auto-generated method stub
+       return trainRidesRepository.save(trainRide);
+    }
+
+    @Override
+    public void deleteTrainRide(long id) {
+        // TODO Auto-generated method stub
+        trainRidesRepository.deleteById(id);
+    }
+
     
 }
