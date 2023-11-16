@@ -1,4 +1,4 @@
-package com.rungoop.web.controller.Customer;
+package com.rungoop.web.controller.user;
 
 import java.util.List;
 
