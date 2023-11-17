@@ -19,5 +19,23 @@ public class UserServiceImpl implements UserService{
         return userRepository.findAll();
     }
 
+    @Override
+    public User getUserById(long id) {
+        // TODO Auto-generated method stub
+        return userRepository.findById(id).get();
+    }
+
+    @Override
+    public User saveUser(User user) {
+        // TODO Auto-generated method stub
+        return userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUser(long id) {
+        // TODO Auto-generated method stub
+        userRepository.deleteById(id);
+    }
+
     
 }

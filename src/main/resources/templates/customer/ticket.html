@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="row">
+            <h1> List Ticket </h1>
+            <a th:href="@{/managerCustomer/customer}">CUSTOMER MANAGE</a>
+            <a th:href="@{/managerTicket/ticket}">TICKET MANAGE</a>
+            <a th:href="@{/managerTrain/train}">TRAIN MANAGE</a>
+        </div>
+        <div class="row">
+            <!-- <div class="col-lg-3">
+                <a th:href="@{/managerTicket/newTicket}" class="btn btn-primary btn-sm mb-3"> ADD Ticket</a>
+            </div> -->
+        </div>
+        <table class="table table-striped table-bordered" style="border: 1px solid black">
+            <thead class="table-dark" >
+            <tr>
+                <th style="border: 1px solid black">id</th>
+                <th style="border: 1px solid black">ticket name</th>
+                <th style="border: 1px solid black">ticket price</th>
+                
+                <th style="border: 1px solid black">discount</th>
+                <th style="border: 1px solid black">seat type</th>
+                <th style="border: 1px solid black">salesman</th>
+                <th style="border: 1px solid black">customer</th>
+                
+                
+                <th style="border: 1px solid black">train rided</th>
+                <th style="border: 1px solid black">train destination</th>
+            </tr>
+            <tbody>
+            <tr th:each="ticket: ${listTicket}">
+                <td th:text="${ticket.id}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.ticketName}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.ticketPrice}" style="border: 1px solid black"></td>
+                
+                <td th:text="${ticket.discount}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.seatType}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.userId.fullName}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.customerId.name}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.trainRideId.departureStation}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.trainRideId.destination}" style="border: 1px solid black"></td>
+                <td>
+                   <a th:href="@{/managerTicket/editTicket/{id}(id=${ticket.id})}"
+                      class="btn btn-primary">Update</a>
+    
+                  <a th:href="@{/managerTicket/deleteTicket/{id}(id=${ticket.id})}"
+                       class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>
