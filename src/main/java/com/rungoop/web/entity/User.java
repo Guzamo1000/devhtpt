@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User extends Account{
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Id
     @Column(name="id")

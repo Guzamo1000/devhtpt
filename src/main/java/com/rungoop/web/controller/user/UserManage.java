@@ -66,6 +66,7 @@ public class UserManage {
         userUpdate.setId(id);
         userUpdate.setFullName(user.getFullName());
         userUpdate.setAccount(user.getAccount());
+        // userUpdate.setPassword(user.getAccount());
         userUpdate.setRole(user.getRole());
         userUpdate.setPhoneNumber(user.getPhoneNumber());
         userUpdate.setBranchId(user.getBranchId());

@@ -37,5 +37,11 @@ public class UserServiceImpl implements UserService{
         userRepository.deleteById(id);
     }
 
+    @Override
+    public Long getUserByAccount(String account) {
+        // TODO Auto-generated method stub
+        return userRepository.findUserByAccount(account);
+    }
+
     
 }

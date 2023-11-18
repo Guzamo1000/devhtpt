@@ -14,4 +14,6 @@ public interface UserService {
     User saveUser(User user);
 
     void deleteUser(long id);
+
+    Long getUserByAccount(String account);
 }
