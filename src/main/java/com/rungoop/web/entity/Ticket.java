@@ -1,7 +1,9 @@
 package com.rungoop.web.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -15,32 +17,32 @@ public class Ticket {
     @Id
     @Column(name = "id")
     private Long id;
-    @Column(name="ticketName")
+    @Column(name = "ticketName")
     private String ticketName;
-    @Column(name="ticketPrice")
-    private float ticketPrice;
+    @Column(name = "ticketPrice")
+    private Double ticketPrice;
 
-   
-    @Column(name="discount")
-    private float discount;
 
-    @Column(name="seatType")
-    private  String seatType;
+    @Column(name = "discount")
+    private Double discount;
+
+    @Column(name = "seatType")
+    private String seatType;
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name="userId")
+    @JoinColumn(name = "userId")
     private User userId;
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name="customerId")
-    private Customer customerId;
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name="trainRideId")
-    private  TrainRide trainRideId;
-   
 
-    
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "customerId")
+    private Customer customerId;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "trainRideId")
+    private TrainRide trainRideId;
+
 
 }
