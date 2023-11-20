@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+// import com.rungoop.web.controller.Statistical;
 import com.rungoop.web.entity.Ticket;
 @Service
 public interface TicketService {
@@ -17,5 +18,7 @@ public interface TicketService {
     Ticket updateTicket(Ticket ticket);
 
     void deleteTicket(long id);
+
+    // List<com.rungoop.web.entity.Statistical> getStatisticals1();
     
 }

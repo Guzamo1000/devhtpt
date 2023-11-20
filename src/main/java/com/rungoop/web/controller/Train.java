@@ -42,10 +42,11 @@ public class Train {
     public String login(Model model, @ModelAttribute("account") Account account, HttpSession session){
         User userlogin=userService.getUserById(userService.getUserByAccount(account.getAccount()));
         if(userlogin!=null){
-            System.err.println("account: "+account.getPassword());
-            System.err.println("userLogin: "+userlogin.getAccount());
+            // System.err.println("account: "+account.getPassword());
+            // System.err.println("userLogin: "+userlogin.getAccount());
             if(userlogin.getPassword().equals(account.getPassword()) ){
                 session.setAttribute("currentUser", userlogin);
+                System.out.println("user current: "+((User) session.getAttribute("currentUser")).getRole());
                 return "redirect:/managerTicket/ticket";
             }
             
@@ -53,4 +54,5 @@ public class Train {
         return null;
         
     }
+    
 }

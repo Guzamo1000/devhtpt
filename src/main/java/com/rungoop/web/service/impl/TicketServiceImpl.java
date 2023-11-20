@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rungoop.web.entity.Statistical;
 import com.rungoop.web.entity.Ticket;
 import com.rungoop.web.reponsitory.TicketRepository;
 import com.rungoop.web.service.TicketService;
@@ -44,6 +45,12 @@ public class TicketServiceImpl implements TicketService {
         return ticketRepository.save(ticket);
     
     }
+
+    // @Override
+    // public List<Statistical> getStatisticals1() {
+    //     // TODO Auto-generated method stub
+    //     return ticketRepository.findStatis1();
+    // }
 
         
 }

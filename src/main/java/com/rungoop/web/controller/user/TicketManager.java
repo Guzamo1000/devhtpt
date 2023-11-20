@@ -1,5 +1,6 @@
 package com.rungoop.web.controller.user;
 
+import com.rungoop.web.entity.Account;
 import com.rungoop.web.entity.Customer;
 import com.rungoop.web.entity.Ticket;
 import com.rungoop.web.entity.TrainRide;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,9 +40,20 @@ public class TicketManager {
     private TrainRidesService trainRidesService;
     
     @GetMapping("/ticket")
-    public String getAllTicket(Model model) {
-        model.addAttribute("tickets", ticketService.getAllTicket());
-        return "user/ticketManager";
+    public String getAllTicket(Model model, HttpSession session) {
+        User currentUser=(User) session.getAttribute("currentUser");
+        System.err.println("currentUser ROLE: "+currentUser.getRole());
+        // if(currentUser.getRole()=="2"){
+        //     Account accountNew=new Account();
+        //     model.addAttribute("account", accountNew);
+        //     return "redirect:/login";
+            
+        // }
+        // else{
+            model.addAttribute("tickets", ticketService.getAllTicket());
+
+            return "user/ticketManager";
+        // }
     }
 
     @GetMapping("/newTicket")

@@ -2,6 +2,8 @@ package com.rungoop.web.controller.user;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.rungoop.web.entity.Account;
 import com.rungoop.web.entity.Station;
 import com.rungoop.web.entity.Ticket;
 import com.rungoop.web.entity.Train;
 import com.rungoop.web.entity.TrainRide;
+import com.rungoop.web.entity.User;
 import com.rungoop.web.service.StationService;
 import com.rungoop.web.service.TrainRidesService;
 import com.rungoop.web.service.TrainService;
@@ -30,7 +34,13 @@ public class TrainRideManage {
     private TrainService trainService;
 
     @GetMapping("/trainride")
-    public String viewTrainRide(Model model){
+    public String viewTrainRide(Model model, HttpSession session){
+        User currentUser=(User) session.getAttribute("currentUser");
+        if(currentUser.getRole()!="2"){
+            Account accountNew=new Account();
+            model.addAttribute("account", accountNew);
+            return "redirect:/login";
+        }
         model.addAttribute("trainride",trainRidesService.getAllTrainRides());
         return "user/trainrideManager";
     }
