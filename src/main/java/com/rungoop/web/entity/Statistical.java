@@ -21,7 +21,7 @@ public class Statistical {
     private Long trainRideId;
     private LocalDateTime trainRiderDepatureTime;
     private String trainRiderDepartureStation;
-    private String trainRiderdestination;
+    private String trainRiderDestination;
     private Long userId;
     private String userFullName;
     private String userRole;
