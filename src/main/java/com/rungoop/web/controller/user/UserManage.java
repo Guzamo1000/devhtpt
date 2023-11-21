@@ -32,34 +32,20 @@ public class UserManage {
     @GetMapping(value="/user")
     public String allUser(Model model,HttpSession session) {
         List<User> listUser=userService.getAllUser();
-        User currentUser=(User)session.getAttribute("currentUser");
-        System.out.println("session role" + currentUser.getRole());
-        if(currentUser.getRole()=="2"){
+        
             model.addAttribute("listUser", listUser);
             return "user/userManage";
-        }
-        if(currentUser==null || currentUser.getRole()!="2"){
-            Account accountNew=new Account();
-            model.addAttribute("account", accountNew);
-            return "redirect:/login";
-        }
-        return null;
+        
+
     }
     @GetMapping("/createUser")
     public String createUser(Model model,HttpSession session){
-        User currentUser=(User)session.getAttribute("currentUser");
-        if(currentUser.getRole()=="2"){
+        // User currentUser=(User)session.getAttribute("currentUser");
             User user=new User();
             model.addAttribute("user", user);
             List<Branch> listBranch=branchService.getAllBranch();
             model.addAttribute("listBranch", listBranch);
             return "/user/userCreate";
-        }
-        else{
-            Account accountNew=new Account();
-            model.addAttribute("account", accountNew);
-            return "redirect:/login";
-        }
     }
     @GetMapping("/editUser/{id}")
     public String editUser(@PathVariable long id, Model model,HttpSession session){

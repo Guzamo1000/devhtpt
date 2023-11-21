@@ -37,10 +37,10 @@
                 <th>Role employee</th> -->
             </tr>
             <tbody>
-            <tr th:each="st: ${statis2}">
-                <td th:text="${st.address}"></td>
-                <td th:text="${st.ticket_sale}"></td>
-                <td th:text="${st.total_revenus}"></td>
+            <tr th:each="st: ${statis}">
+                <td th:text="${st.getAddress()}"></td>
+                <td th:text="${st.getTicketSale()}"></td>
+                <td th:text="${st.getTotalRevenue()}"></td>
                 <!-- <td th:text="${st.seatType}"></td>
                 <td th:text="${st.customerId}"></td>
                 <td th:text="${st.customerName}"></td>

@@ -34,7 +34,7 @@ public class TrainRideManage {
     private TrainService trainService;
 
     @GetMapping("/trainride")
-    public String viewTrainRide(Model model, HttpSession session){
+    public String viewTrainRide(Model model){
         // User currentUser=(User) session.getAttribute("currentUser");
         
         // System.out.println("id current USER: "+ currentUser.getRole());
