@@ -1,22 +1,40 @@
-// package com.rungoop.web.controller;
+package com.rungoop.web.controller;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.ui.Model;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.List;
 
-// import com.rungoop.web.service.StatisticalService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-// @Controller
-// @RequestMapping("statistical")
-// public class Statistical {
-//     // @Autowired
-//     // private StatisticalService statisticalService;
+import com.rungoop.web.entity.Statistical2;
+import com.rungoop.web.reponsitory.BranchRepository;
+import com.rungoop.web.reponsitory.StationRepository;
+import com.rungoop.web.service.StationService;
 
-//     // @GetMapping("ticketsForSale")
-//     // public String ticketForSale(Model model){
-//     //     model.addAttribute("statis1", statisticalService.getStatis1());
-//     //     return "/user/statistical1";
-//     // }
-// }
+@Controller
+@RequestMapping("/statistical")
+public class Statistical {
+    @Autowired
+    private StationRepository stationRepository;
+    @Autowired
+    private BranchRepository branchRepository;
+
+    @GetMapping("/ticketsForSale")
+    public String ticketForSale(Model model){
+        List<com.rungoop.web.entity.Statistical1> statis=stationRepository.joinTicketForSale();
+        model.addAttribute("statis1",statis);
+        return "/user/statistical1";
+    }
+    // @GetMapping("/ticketAndQuanlity")
+    // public String ticketAndQuanlity(Model model)
+    // {
+    //     List<Statistical2> statis=branchRepository.statistical2();
+    //     model.addAttribute("statis", statis);
+    //     return "statistical2";
+    // }
+}

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Statistical {
+public class Statistical1 {
     private String ticketName;
     private Double ticketPrice;
     private Double discount;
@@ -25,4 +25,5 @@ public class Statistical {
     private Long userId;
     private String userFullName;
     private String userRole;
+    private String address;
 }

@@ -43,7 +43,7 @@ public class TicketManager {
     public String getAllTicket(Model model, HttpSession session) {
         User currentUser=(User) session.getAttribute("currentUser");
         System.err.println("currentUser ROLE: "+currentUser.getRole());
-        // if(currentUser.getRole()=="2"){
+        // if(currentUser.getRole()!="2" || currentUser.getRole()==null){
         //     Account accountNew=new Account();
         //     model.addAttribute("account", accountNew);
         //     return "redirect:/login";

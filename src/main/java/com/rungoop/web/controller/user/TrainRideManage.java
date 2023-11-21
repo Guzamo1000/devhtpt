@@ -35,14 +35,20 @@ public class TrainRideManage {
 
     @GetMapping("/trainride")
     public String viewTrainRide(Model model, HttpSession session){
-        User currentUser=(User) session.getAttribute("currentUser");
-        if(currentUser.getRole()!="2"){
-            Account accountNew=new Account();
-            model.addAttribute("account", accountNew);
-            return "redirect:/login";
-        }
-        model.addAttribute("trainride",trainRidesService.getAllTrainRides());
-        return "user/trainrideManager";
+        // User currentUser=(User) session.getAttribute("currentUser");
+        
+        // System.out.println("id current USER: "+ currentUser.getRole());
+        // // if(currentUser.getRole()!="2"){
+        //     Account accountNew=new Account();
+        //     model.addAttribute("account", accountNew);
+        //     return "redirect:/login";
+        // }
+        // else{
+            model.addAttribute("trainride",trainRidesService.getAllTrainRides());
+            // List<Station> listStation=stationService.getAllStation();
+            // model.addAttribute("listStation", listStation);
+            return "user/trainrideManager";
+        // }
     }
     @GetMapping("/editTrainRide/{id}")
     public String editTrainRide(@PathVariable long id, Model model){

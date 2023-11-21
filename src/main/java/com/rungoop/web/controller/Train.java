@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.rungoop.web.entity.Account;
 import com.rungoop.web.entity.Customer;
 import com.rungoop.web.entity.User;
+import com.rungoop.web.reponsitory.StationRepository;
 import com.rungoop.web.service.CustomerService;
 import com.rungoop.web.service.UserService;
 
@@ -27,6 +28,9 @@ public class Train {
     private UserService userService;
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private StationRepository stationRepository;
+    
     @RequestMapping("")
     public String home()
     {

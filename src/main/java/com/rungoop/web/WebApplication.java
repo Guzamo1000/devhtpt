@@ -10,19 +10,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import java.util.List;
 
 @SpringBootApplication
-@EnableScheduling
-public class WebApplication implements CommandLineRunner {
+public class WebApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebApplication.class, args);
 	}
 
-	@Autowired
-	private StationRepository stationRepository;
-
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println(stationRepository.search());
-	}
-
 }
+
