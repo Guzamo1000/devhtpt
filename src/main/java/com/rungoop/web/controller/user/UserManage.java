@@ -49,19 +49,19 @@ public class UserManage {
     }
     @GetMapping("/editUser/{id}")
     public String editUser(@PathVariable long id, Model model,HttpSession session){
-        User currentUser=(User)session.getAttribute("currentUser");
-        if(currentUser.getRole()=="2"){
+        // User currentUser=(User)session.getAttribute("currentUser");
+        // if(currentUser.getRole()=="2"){
             User user=userService.getUserById(id);
             model.addAttribute("user", user);
             List<Branch> listBranch=branchService.getAllBranch();
             model.addAttribute("listBranch", listBranch);
             return "user/userEdit";
-        }
-        else{
-            Account accountNew=new Account();
-            model.addAttribute("account", accountNew);
-            return "redirect:/login";
-        }
+        // }
+        // else{
+        //     Account accountNew=new Account();
+        //     model.addAttribute("account", accountNew);
+        //     return "redirect:/login";
+        // }
         
 
     }
