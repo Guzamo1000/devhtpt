@@ -103,6 +103,7 @@ public class TicketManager {
         Ticket ticketupdate=ticketService.getTicketById(id);
         ticketupdate.setId(id);
         // ticketupdate.setTicketName(ticket.getTicketName());
+        ticketupdate.setTicketPrice(ticket.getTicketPrice());
         ticketupdate.setDiscount(ticket.getDiscount());
         ticketupdate.setSeatType(ticket.getSeatType());
         ticketupdate.setUserId(ticket.getUserId());
