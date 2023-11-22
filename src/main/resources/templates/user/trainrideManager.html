@@ -12,6 +12,8 @@
             <a th:href="@{/managerCustomer/customer}">CUSTOMER MANAGE</a>
             <a th:href="@{/managerTicket/ticket}">TICKET MANAGE</a>
             <a th:href="@{/managerTrain/train}">TRAIN MANAGE</a>
+            <a th:href="@{/managerTrainRide/trainride}">TRAIN RIDE</a>
+            <a th:href="@{/managerUser/user}">USER</a>
         </div>
         <div class="row">
             <div class="col-lg-3">
@@ -38,10 +40,10 @@
             <tr th:each="trainrd: ${trainride}">
                 <td th:text="${trainrd.id}" style="border: 1px solid black"></td>
                 <td th:text="${trainrd.departureTime}" style="border: 1px solid black"></td>
-                <td th:text="${trainrd.departureStation}" style="border: 1px solid black"></td>
+                <!-- <td th:text="${trainrd.departureStation}" style="border: 1px solid black"></td> -->
                 
-                <td th:text="${trainrd.destination}" style="border: 1px solid black"></td>
                 <td th:text="${trainrd.station.address}" style="border: 1px solid black"></td>
+                <td th:text="${trainrd.destination.address}" style="border: 1px solid black"></td>
                 <td th:text="${trainrd.train.id}" style="border: 1px solid black"></td>
                 <!-- <td th:text="${trainrd.userId.fullName}" style="border: 1px solid black"></td>
                 <td th:text="${trainrd.customerId.name}" style="border: 1px solid black"></td>

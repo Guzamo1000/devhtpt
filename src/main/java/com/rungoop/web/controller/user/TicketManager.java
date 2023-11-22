@@ -102,7 +102,7 @@ public class TicketManager {
     public String editTicket(@PathVariable long id, @ModelAttribute("ticket") Ticket ticket, Model model){
         Ticket ticketupdate=ticketService.getTicketById(id);
         ticketupdate.setId(id);
-        ticketupdate.setTicketName(ticket.getTicketName());
+        // ticketupdate.setTicketName(ticket.getTicketName());
         ticketupdate.setDiscount(ticket.getDiscount());
         ticketupdate.setSeatType(ticket.getSeatType());
         ticketupdate.setUserId(ticket.getUserId());

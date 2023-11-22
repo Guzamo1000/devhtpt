@@ -23,16 +23,22 @@ public class TrainRide {
     @Column(name = "departureTime")
     @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private LocalDateTime departureTime;
-    @Column(name="departureStation")
-    private String departureStation;
-    @Column(name = "Destination")
-    private String destination;
+    // @Column(name="departureStation")
+    // private String departureStation;
+
+    @Column(name="seat1_availability")
+    private Integer seat1Availability;
+    @Column(name="seat2_availability")
+    private Integer seat2Availability;
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name="departure_station_id")
+    private Station station;
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name="station")
-    private Station station;
-
+    @JoinColumn(name = "destination_station_id")
+    private Station destination;
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name="trainId")

@@ -13,10 +13,11 @@
             <a th:href="@{/managerTicket/ticket}">TICKET MANAGE</a>
             <a th:href="@{/managerTrain/train}">TRAIN MANAGE</a>
             <a th:href="@{/managerTrainRide/trainride}">TRAIN RIDE</a>
+            <a th:href="@{/managerUser/user}">USER</a>
         </div>
         <div class="row">
             <div class="col-lg-3">
-                <a th:href="@{/managerTicket/newTicket}" th:disabled="${#httpSession.getAttribute('currentUser').role != 2}"  class="btn btn-primary btn-sm mb-3"> ADD Ticket</a>
+                <a th:href="@{/managerTicket/newTicket}" class="btn btn-primary btn-sm mb-3"> ADD Ticket</a>
             </div>
         </div>
         <table class="table table-striped table-bordered" style="border: 1px solid black">

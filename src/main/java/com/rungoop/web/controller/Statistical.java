@@ -26,12 +26,12 @@ public class Statistical {
     @Autowired
     private BranchRepository branchRepository;
 
-    @GetMapping("/ticketsForSale")
-    public String ticketForSale(Model model){
-        List<com.rungoop.web.entity.Statistical1> statis=stationRepository.joinTicketForSale();
-        model.addAttribute("statis1",statis);
-        return "/user/statistical1";
-    }
+    // @GetMapping("/ticketsForSale")
+    // public String ticketForSale(Model model){
+    //     List<com.rungoop.web.entity.Statistical1> statis=stationRepository.joinTicketForSale();
+    //     model.addAttribute("statis1",statis);
+    //     return "/user/statistical1";
+    // }
     @GetMapping("/ticketAndQuanlity")
     public String ticketAndQuanlity(Model model)
     {

@@ -17,8 +17,8 @@ public class Ticket {
     @Id
     @Column(name = "id")
     private Long id;
-    @Column(name = "ticketName")
-    private String ticketName;
+    // @Column(name = "ticketName")
+    // private String ticketName;
     @Column(name = "ticketPrice")
     private Double ticketPrice;
 
