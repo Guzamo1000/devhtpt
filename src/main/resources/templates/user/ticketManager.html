@@ -14,6 +14,7 @@
             <a th:href="@{/managerTrain/train}">TRAIN MANAGE</a>
             <a th:href="@{/managerTrainRide/trainride}">TRAIN RIDE</a>
             <a th:href="@{/managerUser/user}">USER</a>
+            
         </div>
         <div class="row">
             <div class="col-lg-3">
@@ -39,22 +40,22 @@
             <tbody>
             <tr th:each="ticket: ${tickets}">
                 <td th:text="${ticket.id}" style="border: 1px solid black"></td>
-                <td th:text="${ticket.ticketName}" style="border: 1px solid black"></td>
+                <!-- <td th:text="${ticket.ticketName}" style="border: 1px solid black"></td> -->
                 <td th:text="${ticket.ticketPrice}" style="border: 1px solid black"></td>
                 
                 <td th:text="${ticket.discount}" style="border: 1px solid black"></td>
                 <td th:text="${ticket.seatType}" style="border: 1px solid black"></td>
                 <td th:text="${ticket.userId.fullName}" style="border: 1px solid black"></td>
                 <td th:text="${ticket.customerId.name}" style="border: 1px solid black"></td>
-                <td th:text="${ticket.trainRideId.departureStation}" style="border: 1px solid black"></td>
-                <td th:text="${ticket.trainRideId.destination}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.trainRideId.station.address}" style="border: 1px solid black"></td>
+                <td th:text="${ticket.trainRideId.destination.address}" style="border: 1px solid black"></td>
                 <td>
                    <a th:href="@{/managerTicket/editTicket/{id}(id=${ticket.id})}"
-                        th:disabled="${#httpSession.getAttribute('currentUser').getRole() != 2}"
+                        
                       class="btn btn-primary">Update</a>
     
                   <a th:href="@{/managerTicket/deleteTicket/{id}(id=${ticket.id})}"
-                  th:disabled="${#httpSession.getAttribute('currentUser').getRole() != 2}" 
+         
                        class="btn btn-danger">Delete</a>
                 </td>
             </tr>
